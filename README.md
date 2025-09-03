@@ -24,3 +24,17 @@ Full project documentation with architecture details, implementation challenges,
 📄 [Frontend_File_By_HTML+Javascript+CSS](./App.html)
 
 ## 🏗️ Architecture Overview
+
+
+```mermaid
+graph LR
+    A[Users] --> B[Load Balancer<br/>us-east-1]
+    A --> C[Load Balancer<br/>us-east-2]
+    B --> D[Web App<br/>N. Virginia]
+    C --> E[Web App<br/>Ohio]
+    D --> F[users.json]
+    E --> F
+    D --> G[S3 Placeholder<br/>Product Images]
+    E --> G
+    D <--> H[Transit Gateway]
+    E <--> H
